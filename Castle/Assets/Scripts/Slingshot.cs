@@ -56,12 +56,16 @@ public class Slingshot : MonoBehaviour
             mouseDelta *= maxMagnitude;
         }
         Vector3 projPos = launchPos + mouseDelta;
+        //print("x = " + projPos.x);
+        //if (projPos.x > -10)
+        //    return;
         projectile.transform.position = projPos;
         if(Input.GetMouseButtonUp(0))
         {
             aimingMode = false;
             projectileRigidbody.isKinematic = false;
             projectileRigidbody.velocity = -mouseDelta * velocityMult;
+            FollowCam.POI = projectile;
             projectile = null;
         }
     }
